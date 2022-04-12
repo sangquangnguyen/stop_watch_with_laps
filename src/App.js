@@ -16,10 +16,6 @@ function App() {
   const [startTime, setStartTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [laps, setLaps] = useState([]);
-  const onStopWatch = (currentTime) => {
-    setDuration(currentTime);
-    setStatus(STATUS.STOPPED);
-  };
 
   return (
     <div className="App">
@@ -33,7 +29,10 @@ function App() {
       )}
       {status === STATUS.RUNNING && (
         <RunningWatch
-          onStopWatch={onStopWatch}
+          onStopWatch={(currentTime) => {
+            setDuration(currentTime);
+            setStatus(STATUS.STOPPED);
+          }}
           onLapWatch={(d) =>
             setLaps((laps) => {
               return [d, ...laps].slice(0, 10);
