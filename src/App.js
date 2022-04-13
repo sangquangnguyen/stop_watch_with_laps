@@ -56,10 +56,10 @@ function App() {
         />
       )}
       <ul>
-        {laps.map((l) => {
+        {laps.map((lap) => {
           return (
-            <li>
-              <Duration durationMs={l} />
+            <li key={lap}>
+              <Duration durationMs={lap} />
             </li>
           );
         })}
